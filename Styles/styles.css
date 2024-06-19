@@ -74,7 +74,9 @@
 /*Globales*/
 :root{
   --principal: #4372e7;
-  --secundario: #085477;
+  --secundario: #696969;
+  --blanco: #ffffff;
+  --oscuro: #212121;
   --fuentes: "Roboto", sans-serif; 
 }
 
@@ -123,13 +125,54 @@ h1,h2,h3 {
   text-align: center;
 }
 
+p {
+  font-size: 1.5rem;
+}
+
 
 
 /*Barra de navegación*/
 .nav-bar {
   font-family: var(--fuentes);
+  background-color: var(--secundario);
 }
 
+.nav-principal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav-principal a {
+  color: var(--blanco);
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .nav-principal{
+      flex-direction: row;
+      justify-content: space-between;
+    }
+}
+
+.nav-principal a:hover {
+  background-color: var(--principal);
+  color: var(--oscuro);
+}
+
+
+.nav-contenedor{
+  max-width: 80rem;
+  margin: 0 auto /*0 auto*/;
+}
+
+.contenedor {
+  max-width: 120rem;
+  margin: 0 auto /*0 auto*/;
+}
 
 /*Datos obtenidos*/
 
