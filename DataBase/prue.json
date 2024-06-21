@@ -1,0 +1,57 @@
+[
+    {
+        "id": "inject",
+        "type": "inject",
+        "z": "flow-id",
+        "name": "Generar Datos",
+        "props": [{"p": "payload"}],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 180,
+        "wires": [["function"]]
+    },
+    {
+        "id": "function",
+        "type": "function",
+        "z": "flow-id",
+        "name": "Generar Datos y Etiquetas",
+        "func": "var data = [];\nvar labels = [];\nfor (var i = 0; i < 7; i++) {\n    data.push(Math.floor(Math.random() * 100));\n    labels.push(\"Label \" + (i + 1));\n}\nmsg.payload = { labels: labels, data: data };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 180,
+        "wires": [["http-response"]]
+    },
+    {
+        "id": "http-response",
+        "type": "http response",
+        "z": "flow-id",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 510,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "http-in",
+        "type": "http in",
+        "z": "flow-id",
+        "name": "",
+        "url": "/getData",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 120,
+        "wires": [["inject"]]
+    }
+]
+
+
